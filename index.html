@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Priya Nagalingam — Supply Planning Consultant</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:       #1a1a2e;
+      --mid:       #4a4a6a;
+      --muted:     #8888aa;
+      --accent:    #2d6a9f;
+      --accent2:   #1a3a5c;
+      --highlight: #e8f4fd;
+      --rule:      #d8dde8;
+      --bg:        #f7f8fc;
+      --white:     #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--accent2);
+      color: var(--white);
+      padding: 56px 0 48px;
+    }
+    .header-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: end;
+    }
+    .name {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+      color: var(--white);
+    }
+    .title-tag {
+      display: inline-block;
+      margin-top: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #93c5e8;
+      border-left: 2px solid #93c5e8;
+      padding-left: 10px;
+    }
+    .contact-block {
+      text-align: right;
+      font-size: 0.82rem;
+      line-height: 2;
+      color: #b8d8f0;
+    }
+    .contact-block a {
+      color: #b8d8f0;
+      text-decoration: none;
+      border-bottom: 1px dotted #93c5e8;
+    }
+    .contact-block a:hover { color: var(--white); }
+
+    /* ── SUMMARY BAND ── */
+    .summary-band {
+      background: var(--accent);
+      color: var(--white);
+      padding: 20px 32px;
+    }
+    .summary-band p {
+      max-width: 860px;
+      margin: 0 auto;
+      font-size: 0.9rem;
+      line-height: 1.75;
+      opacity: 0.93;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 32px 60px;
+    }
+
+    /* ── SECTION ── */
+    section { margin-top: 44px; }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    /* ── JOB CARD ── */
+    .job { margin-bottom: 32px; }
+    .job-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+    .company {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem;
+      color: var(--ink);
+    }
+    .period {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .role {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .job ul {
+      list-style: none;
+      padding: 0;
+    }
+    .job ul li {
+      position: relative;
+      padding-left: 18px;
+      font-size: 0.875rem;
+      color: var(--mid);
+      margin-bottom: 6px;
+      line-height: 1.65;
+    }
+    .job ul li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+    }
+    .skill-group { background: var(--white); border: 1px solid var(--rule); border-radius: 6px; padding: 14px 16px; }
+    .skill-group-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--accent2);
+      background: var(--highlight);
+      border-radius: 4px;
+      padding: 2px 8px;
+    }
+
+    /* ── CERTS & EDU ── */
+    .cert-list, .edu-list { list-style: none; }
+    .cert-list li, .edu-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--rule);
+      font-size: 0.875rem;
+      color: var(--mid);
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+    .cert-list li:last-child, .edu-list li:last-child { border-bottom: none; }
+    .cert-list li::before {
+      content: '✓';
+      color: var(--accent);
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+    .edu-list li::before {
+      content: '◆';
+      color: var(--accent);
+      font-size: 0.6rem;
+      flex-shrink: 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      border-top: 1px solid var(--rule);
+      margin-top: 40px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .header-inner { grid-template-columns: 1fr; }
+      .contact-block { text-align: left; }
+      .job-header { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media print {
+      body { background: white; font-size: 13px; }
+      header { background: var(--accent2) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .summary-band { background: var(--accent) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .container { padding: 0 16px 20px; }
+      section { margin-top: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div>
+      <div class="name">Priya Nagalingam</div>
+      <div class="title-tag">Supply Planning · OMP Functional Consultant</div>
+    </div>
+    <div class="contact-block">
+      <div><a href="tel:+917401288010">+91-7401288010</a></div>
+      <div><a href="mailto:priyasri.n321@gmail.com">priyasri.n321@gmail.com</a></div>
+      <div>Chennai, India</div>
+    </div>
+  </div>
+</header>
+
+<div class="summary-band">
+  <p>Experienced Functional Consultant in Supply Planning with deep expertise in OMP configuration and solution delivery across Accenture, EY, TCS, and LTI. Excels at analyzing business needs, resolving functional gaps, and delivering high-quality outcomes — committed to precision and building lasting, value-driven client relationships.</p>
+</div>
+
+<div class="container">
+
+  <!-- EXPERIENCE -->
+  <section>
+    <div class="section-label">Work Experience</div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="company">Accenture</span>
+        <span class="period">Jul 2025 – Present</span>
+      </div>
+      <div class="role">Management Analyst · Chennai</div>
+      <ul>
+        <li>Collaborated with clients to gather and analyze project requirements, ensuring proposed software solutions effectively address business needs.</li>
+        <li>Supported deployment activities by organizing and maintaining critical operational data required for accurate solver planning.</li>
+        <li>Validated Master Production Schedule (MPS) solver outputs through detailed data checks, ensuring alignment with planning logic and operational constraints.</li>
+        <li>Managed system configuration including multi-user setup, pyramid configuration, batch job creation, and pivot report development.</li>
+        <li>Conducted As-Is analysis of client supply chain processes and mapped them to target-state workflows within OMP.</li>
+        <li>Identified and resolved integration errors between ECC and OMP, including troubleshooting missing SKU master data.</li>
+        <li>Monitored and managed batch jobs across production and non-production environments.</li>
+        <li>Performed forecast comparisons between APO and OMP using Power BI dashboards to support planning accuracy.</li>
+        <li>Played a key role in production cutover activities and led hyper care support to ensure smooth transition to BAU operations.</li>
+        <li>Delivered user training and enabled change agents on effective use of the OMP application.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="company">Ernst &amp; Young</span>
+        <span class="period">Oct 2023 – Jul 2025</span>
+      </div>
+      <div class="role">Senior Consultant · Chennai</div>
+      <ul>
+        <li>Trained users and change agents on the OMP application.</li>
+        <li>Responsible for forecast comparison between APO and OMP using Power BI dashboards.</li>
+        <li>Identified and resolved integration errors between ECC and OMP, including missing SKU master data issues.</li>
+        <li>Monitored and managed batch jobs, including creation and maintenance across production and non-production environments.</li>
+        <li>Performed Technical Acceptance Testing (TAT) to validate bug fixes.</li>
+        <li>Led hyper care support ensuring a smooth transition to BAU operations post production cutover.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="company">TATA Consultancy Services</span>
+        <span class="period">Aug 2022 – Oct 2023</span>
+      </div>
+      <div class="role">Functional Consultant · Chennai</div>
+      <ul>
+        <li>Analyzed end-to-end operational lifecycle to identify potential gaps and proactively resolve problem areas.</li>
+        <li>Determined and applied appropriate methodologies and procedures aligned with project guidelines and client requirements.</li>
+        <li>Engaged with clients to gather and understand project requirements, ensuring delivery of suitable software solutions.</li>
+        <li>Managed system configuration including multi-user setup, Advanced Download Configurator (ADC), pyramid configuration, and batch job creation.</li>
+        <li>Organized knowledge transfer sessions for end users through AMM sessions and functional workshops.</li>
+        <li>Developed SIT test cases tailored to market requirements and supported UAT validation of business scenarios.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <span class="company">Larsen &amp; Toubro Infotech</span>
+        <span class="period">Aug 2018 – Jul 2022</span>
+      </div>
+      <div class="role">Functional Consultant – Package Implementation · Bangalore</div>
+      <ul>
+        <li>Executed enhancement testing for the OMP Pharma D2 project, developing test plans for user stories.</li>
+        <li>Conducted System Integration Testing (SIT) for the Pangea implementation project to validate end-to-end system functionality.</li>
+        <li>Managed defect identification and tracking using JIRA, ensuring accurate logging and follow-up.</li>
+        <li>Tracked test execution and managed defect lifecycle using JIRA and HP ALM/QTest.</li>
+        <li>Performed manual regression testing to validate system stability and ensure no impact on existing functionalities.</li>
+        <li>Contributed to environment setup including PAK installations, base build configuration, dispatcher setup, and server monitoring.</li>
+        <li>Identified and communicated risks, issues, and dependencies to stakeholders and cross-functional teams.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section>
+    <div class="section-label">Skills &amp; Tools</div>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-label">Planning Tools</div>
+        <div class="skill-tags">
+          <span class="tag">OMP</span>
+          <span class="tag">SAP APO</span>
+          <span class="tag">SAP MM</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Test Management</div>
+        <div class="skill-tags">
+          <span class="tag">JIRA</span>
+          <span class="tag">HP ALM</span>
+          <span class="tag">Q-Test</span>
+          <span class="tag">Azure DevOps</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Operations</div>
+        <div class="skill-tags">
+          <span class="tag">IRIS</span>
+          <span class="tag">Control-M</span>
+          <span class="tag">Autosys</span>
+          <span class="tag">ServiceNow</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Analytics &amp; Data</div>
+        <div class="skill-tags">
+          <span class="tag">Power BI</span>
+          <span class="tag">SQL</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Frameworks</div>
+        <div class="skill-tags">
+          <span class="tag">ITIL</span>
+          <span class="tag">SIT</span>
+          <span class="tag">UAT</span>
+          <span class="tag">TAT</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section>
+    <div class="section-label">Certifications</div>
+    <ul class="cert-list">
+      <li>OMP Operational and Supply Planning Basic Tier 1</li>
+      <li>Microsoft Azure Fundamentals (AZ-900)</li>
+      <li>Brainbench Certification — SQL</li>
+      <li>LTI Production Support Training</li>
+      <li>SAP Model Company Courses</li>
+    </ul>
+  </section>
+
+  <!-- EDUCATION -->
+  <section>
+    <div class="section-label">Education</div>
+    <ul class="edu-list">
+      <li>
+        <span>Bachelor of Science in Computer Science &nbsp;·&nbsp; SRM Arts and Science College &nbsp;·&nbsp; 2015 – 2018</span>
+      </li>
+    </ul>
+  </section>
+
+</div>
+
+<footer>
+  priya nagalingam &nbsp;·&nbsp; supply planning consultant &nbsp;·&nbsp; chennai, india
+</footer>
+
+</body>
+</html>
